@@ -1,28 +1,28 @@
 @use "sass:math";
 @import "mixins.scss";
 @import "reset.scss";
-
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap");
 
 $mb:rem(100);
 $mmb:rem(50);
-$black:#212529;
-$grey:#495057;
-$lightgrey:rgba(248, 249, 250, 0.5);
+$violet:#2d285d;
+$lightViolet:#ae8be6;
+
 
 
 [class*=__container] {
 		max-width: rem(1270);
 		margin: 0 auto;
 		padding: 0 rem(15);
+		font-weight: 400;
 	  }
 
 body{
-	font-family: "Poppins", sans-serif;
-	font-weight: 300;
+	font-family: 'Montserrat';
     font-size: rem(18);
-    line-height:1.67;
-    color: #282828;
-	background: #f3f3f3;
+    line-height:1.6;
+    color: #e2dbe7;
+	background: $violet;
 }
 .wrapper{ 
 	overflow: clip;
@@ -56,6 +56,9 @@ body{
 	&__title {
 		font-size: rem(30);
 		font-weight: 500;
+		color:$lightViolet;
+		font-weight: 600;
+		text-transform: uppercase;
 		
 	}
 }
@@ -63,51 +66,52 @@ body{
 
 //_____________________
 
-.page {
 
-
-	// .page__list
-
-	&__list {
-	}
-
-	// .page__item
-
-	&__item {
-		
-	}
-}
 .item {
 	
 	
 	padding-bottom: rem(20);
-	padding-top: rem(20);
-	&:not(:last-child) {
-		border-bottom: 1px solid #cecece;
-	}
+	padding-top: rem(40);
+
 
 	// .item__link
 
-	&__link {
-		color: #594aad;
+	&__title {
+		color: $lightViolet;
 		font-size: rem(24);
 		font-weight: 500;
 		display: block;
 		margin-bottom: rem(15);
-		&:hover{
-			color: #594aad;
-		}
+		text-transform: uppercase;
+
 	}
+
+	&__link {
+		color: #e2dbe7;
+		font-size: rem(16);
+		font-weight: 500;
+		display: inline-block;
+		text-transform: uppercase;
+		padding: rem(8) rem(16);
+		background: linear-gradient(to right,#916ad0, #8f5ae5,#8a49f3,  #6937dd);
+		border-radius: rem(18);
+		letter-spacing: 2px;
+		&:hover{
+			background:#8f5ae5;
+		}
+
+	}
+		
 		
 
 	&__answer{
-		color:#594aad;
+		color:$violet;
 		font-size: rem(24);
 		margin-bottom: rem(15);
 	}
 
 	&__task{
-		color:#594aad;
+		color:$violet;
 		font-size: rem(24);
 		margin-bottom: rem(15);
 	}
@@ -116,25 +120,14 @@ body{
 
 	&__text {
 		font-size: rem(20);
+		margin-bottom: rem(20);
+	
 		
 	}
 
 }
 
-.table{
-	font-size: rem(16);
-	
-	color: #606060;
-	font-weight: 400;
-	padding: rem(15);
-	border: 1px solid #000;
-}
 
-.th{
-	
-	padding: rem(10);
-	border: 1px solid #000;
-}
 
 
 
