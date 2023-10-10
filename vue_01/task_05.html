@@ -95,7 +95,7 @@
 								
 							methods:{
 								checkLogins(){
-									let checkUser = loginArray.find((item)=>item.login === this.login && item.password === this.password) 
+									let checkUser = loginArray.find((item)=>item.login.toLowerCase() === this.login.toLowerCase() && item.password === this.password) 
 									if (checkUser) this.info = 'Вiтаю на сайтi'
 									else this.info = 'Невiрний логiн або пароль'
 									this.login=null
