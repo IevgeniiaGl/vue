@@ -146,6 +146,7 @@ body {
   text-transform: uppercase;
 }
 .item__link {
+  margin-top: 1.25rem;
   color: #e2dbe7;
   font-size: 1rem;
   font-weight: 500;
@@ -172,5 +173,71 @@ body {
 }
 .item__text {
   font-size: 1.25rem;
+}
+
+input {
+  border: 1px solid #ae8be6;
+  padding: 0.625rem;
+  font-size: 1.25rem;
+  border-radius: 0.3125rem;
+  color: #e2dbe7;
+}
+input:not(:last-child) {
+  margin-bottom: 0.9375rem;
+}
+
+.input_block:not(:last-child) {
+  margin-bottom: 0.9375rem;
+}
+
+.task-link {
+  margin-top: 6.25rem;
+}
+
+button {
+  margin-bottom: 0.9375rem;
+  border: 1px solid #8f5ae5;
+  padding: 0.5rem 1rem;
+  border-radius: 0.9375rem;
+  color: #e2dbe7;
+  font-size: 1rem;
+  margin-top: 1.25rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  -webkit-transition: background 0.5s ease 0s;
+  transition: background 0.5s ease 0s;
+}
+button:hover {
+  background: #8f5ae5;
+}
+
+.answer {
+  margin-top: 1.25rem;
+}
+
+.balance {
+  margin-bottom: 3.125rem;
+}
+
+.sum {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+}
+
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
+
+.label_text {
+  display: block;
+  padding-bottom: 0.3125rem;
+}
+
+.account {
   margin-bottom: 1.25rem;
 }

@@ -5,6 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="css/style.css">
 		<link href="https://fonts.googleapis.com/css?family=Montserrat:500,600,700&display=swap" rel="stylesheet">
+		<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 		<title>Lesson 01</title>
 	</head>
 	<body>
@@ -21,18 +22,75 @@
 			<main class="main">
 				<div class="page">
 					<div class="page__container">
-						<ul class="page__list">
-							<li class="page__item item">
-								
-								<div class="item__text"> Решение задачи:
-									
-								</div>
-								<a class="item__link" href="index.html">На головну</a>
-							</li>
+						<!-------------------------------------------------------->
 
-						</ul>
+
+						<div id="app">
+							<div>
+								<label> 
+								<span class="label_text">Кількість пасажирів </span>
+								<input  type="number" v-model="num">
+								</label>
+								<div class="answer">
+									Aвтобусів: <span>{{totalBuses}}</span>
+								</div>
+								<div class="answer">
+									Пляшок води: <span>{{totalWaters}}<span>
+								</div>
+								<div class="answer">
+									Бутербродів: <span>{{totalSandwiches}}</span>
+								</div>
+								<button @click="onClear">Clear</button>
+							</div>
+						</div>
+						<!-------------------------------------------------------->
+						<script>
+																	
+							const {createApp} = Vue
+					
+							createApp({
+								data(){
+									return{
+										num:0,
+									}
+								},
+
+
+							methods:{
+								onClear(){
+									return this.num = 0
+								},
+							},
+								
+							computed:{
+								totalBuses(){
+									return Math.ceil(this.num/20)
+								},
+								totalWaters(){
+									return this.num*2
+								},
+								totalSandwiches(){
+									return this.num*3
+								},
+							}})
+
+
+							.mount('#app')
+					
+						</script>
+						<!-------------------------------------------------------->
+
+
+
+
+
+
+
+
+						<a class="item__link task-link" href="index.html">На головну</a>
 					</div> 
-				</main> 
+				</div> 
+			</main> 
 
 		</div>
 	</body>

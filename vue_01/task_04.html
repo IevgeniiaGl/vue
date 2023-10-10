@@ -5,6 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="css/style.css">
 		<link href="https://fonts.googleapis.com/css?family=Montserrat:500,600,700&display=swap" rel="stylesheet">
+		<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
 
 		<title>Lesson 01</title>
@@ -30,17 +31,122 @@
 			<main class="main">
 				<div class="page">
 					<div class="page__container">
-						<ul class="page__list">
-							<li class="page__item item">
-								
-								<div class="item__text"> Решение задачи:
-									
-								</div>
-								<a class="item__link" href="index.html">На головну</a>
-							</li>
+						<!-------------------------------------------------------->
 
-						</ul>
-					</div> 
+
+						<div id="app">
+							<div>
+								<div class="account">
+									На рахунку: <span class="sum" >{{balanceGrn}}</span> грн. 
+								</div>
+								<div class="balance">
+									<label> <span class="label_text">Зарахувати на рахунок</span>
+									<input  type="number" v-model="num1">  
+									<br>
+									Комiciя 3% = {{comisionForIncrease}} грн
+									</label>
+									<br>
+									<button @click='increaseGrn'>Зарахувати</button>
+								</div>
+								<div class="balance">
+									<label> <span class="label_text">Зняти с рахунку</span>
+									<input  type="number" v-model="num2"> 
+									<br>
+									Комiciя 3% = {{comisionForDecrease}} грн
+									</label>
+									<br>
+									<button @click='decreaseSum'>Зняти з рахунку</button> 
+									</div>
+								<div>Баланс USD: <span :class="getDollarsColor">{{convertInDollar}}</span></div>
+								<div>Баланс EUR : <span :class="getEuroColor">{{convertInEuro}}</span></div>
+							</div>
+						</div>
+						<!-------------------------------------------------------->
+						<script>
+																	
+							const {createApp} = Vue
+					
+							createApp({
+								data(){
+									return{
+										sumGrn:0,
+										num1:null,
+										num2:null,
+										dollarRate:37,
+										euroRate:39,
+										usdBalance:0,
+										euroBalance:0,
+										warningMessage:'Введiть коректне значення'
+									}
+								},
+
+
+							methods:{
+								increaseGrn(){
+									if (this.num1 > 0 ) {
+									this.sumGrn =this.sumGrn + (this.num1 - this.num1*0.03)
+									document.querySelector('.sum').style.color='green'}
+									
+
+								},
+								decreaseSum(){
+									if (this.sumGrn>0 && this.sumGrn > this.num2 ) {
+										this.sumGrn = this.sumGrn - (this.num2 - this.num2*0.03)
+										document.querySelector('.sum').style.color='red'
+									}
+								},
+
+							},
+								
+							computed:{
+								balanceGrn(){
+									return this.sumGrn.toFixed(2)
+								},
+
+								convertInDollar(){
+									this.usdBalance = (this.sumGrn/this.dollarRate).toFixed(2)
+									
+									return this.usdBalance
+								},
+								convertInEuro(){
+									this.euroBalance = (this.sumGrn/this.euroRate).toFixed(2)
+									return this.euroBalance
+								},
+								comisionForIncrease(){
+									return (this.num1*0.03).toFixed(2)
+								},
+								comisionForDecrease(){
+									return (this.num2*0.03).toFixed(2)
+								},
+								getDollarsColor() {
+									if(this.usdBalance >= 100) {
+									return 'green'
+										}else{
+										return 'red'
+									}
+								},
+								getEuroColor() {
+									if(this.usdBalance >= 100) {
+									return 'green'
+										}else{
+										return 'red'
+									}
+								},
+							
+
+							}})
+
+
+							.mount('#app')
+					
+						</script>
+						<!-------------------------------------------------------->
+
+
+
+						<a class="item__link task-link" href="index.html">На головну</a>
+					</div>
+				</div> 
 				</main> 
 
 		</div>

@@ -5,8 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="css/style.css">
 		<link href="https://fonts.googleapis.com/css?family=Montserrat:500,600,700&display=swap" rel="stylesheet">
-
-
+		<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 		<title>Lesson 01</title>
 	</head>
 	<body>
@@ -20,16 +19,63 @@
 			<main class="main">
 				<div class="page">
 					<div class="page__container">
-						<ul class="page__list">
-							<li class="page__item item">
-								
-								<div class="item__text"> Решение задачи:
-									
-								</div>
-								<a class="item__link" href="index.html">На головну</a>
-							</li>
+						<!-------------------------------------------------------->
 
-						</ul>
+
+						<div id="app">
+							<div>
+								<label> <span class="label_text">Введiть номер місяця</span>
+								<input  type="number" v-model="monthNum">
+								</label>
+								<div class="answer">
+									Рекомендовано: <span>{{сloth}}</span>
+									<br>
+									<img :src = 'seasonImg'><span>{{image}}</span>
+								</div>
+							</div>
+						</div>
+						<!-------------------------------------------------------->
+						<script>
+							const {createApp} = Vue
+					
+							createApp({
+								data(){
+									return{
+										monthNum:null,
+										seasonImg: null,
+									}
+								},
+								computed:{
+									сloth(){
+												if(this.monthNum === 1 || this.monthNum === 2 || this.monthNum === 12) return 'Шуба'
+												else if(this.monthNum === 3 || this.monthNum === 4 || this.monthNum === 5) return 'Куртка'
+												else if(this.monthNum === 6 || this.monthNum === 7 || this.monthNum === 8) return 'Шорти'
+												else if(this.monthNum === 9 || this.monthNum === 10 || this.monthNum === 11) return 'Пальто'
+											},
+											image(){
+												if(this.monthNum === 1 || this.monthNum === 2 || this.monthNum === 12) this.seasonImg = '/img/winter.png'
+												else if(this.monthNum === 3 || this.monthNum === 4 || this.monthNum === 5) this.seasonImg = '/img/spreeng.png'
+												else if(this.monthNum === 6 || this.monthNum === 7 || this.monthNum === 8) this.seasonImg = '/img/summer.png'
+												else if(this.monthNum === 9 || this.monthNum === 10 || this.monthNum === 11) this.seasonImg = '/img/autumn.png'
+											},
+										},
+									}
+								)
+
+
+							.mount('#app')
+					
+						</script>
+						<!-------------------------------------------------------->
+
+
+
+
+
+
+
+
+						<a class="item__link task-link" href="index.html">На головну</a>
 					</div> 
 				</main> 
 

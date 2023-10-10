@@ -60,6 +60,8 @@ body{
 		font-weight: 600;
 		text-transform: uppercase;
 		
+		
+		
 	}
 }
 
@@ -87,6 +89,7 @@ body{
 	}
 
 	&__link {
+		margin-top: rem(20);
 		color: #e2dbe7;
 		font-size: rem(16);
 		font-weight: 500;
@@ -120,10 +123,9 @@ body{
 
 	&__text {
 		font-size: rem(20);
-		margin-bottom: rem(20);
-	
-		
 	}
+
+	
 
 }
 
@@ -131,4 +133,70 @@ body{
 
 
 
+input{
+	border: 1px solid $lightViolet;
+	padding: rem(10);
+	font-size: rem(20);
+	border-radius: rem(5);
+	color: #e2dbe7;
+	// margin-left: rem(20);
+	&:not(:last-child) {
+		margin-bottom: rem(15);
+	}
+}
+.input_block{
+	&:not(:last-child) {
+		margin-bottom: rem(15);
+	}
+}
 
+.task-link{
+	margin-top: rem(100);
+}
+
+button{
+margin-bottom: rem(15);
+border: 1px solid #8f5ae5;
+padding: rem(8) rem(16);
+border-radius: rem(15);
+color:  #e2dbe7;
+font-size: rem(16);
+margin-top: rem(20);
+text-transform: uppercase;
+letter-spacing: 2px;
+transition: background 0.5s ease 0s;
+&:hover{
+	background:#8f5ae5;
+	;
+}
+}
+.answer{
+	
+	margin-top: rem(20);
+	
+}
+
+.balance{
+	margin-bottom: rem(50);
+
+}
+.sum{
+	font-size: rem(24);
+	font-weight: 600;
+	margin-bottom: rem(20);
+}
+
+.red{
+	color: red;
+}
+
+.green{
+	color: green;
+}
+.label_text{
+	display: block;
+	padding-bottom: rem(5);
+}
+.account{
+	margin-bottom: rem(20);
+}

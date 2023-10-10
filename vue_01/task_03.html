@@ -5,6 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="css/style.css">
 		<link href="https://fonts.googleapis.com/css?family=Montserrat:500,600,700&display=swap" rel="stylesheet">
+		<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
 
 		<title>Lesson 01</title>
@@ -20,16 +21,70 @@
 			<main class="main">
 				<div class="page">
 					<div class="page__container">
-						<ul class="page__list">
-							<li class="page__item item">
-								
-								<div class="item__text"> Решение задачи:
-									
-								</div>
-								<a class="item__link" href="index.html">На головну</a>
-							</li>
+						<!-------------------------------------------------------->
 
-						</ul>
+
+						<div id="app">
+							<div>
+								<label> <span class="label_text">Початок дiапазону</span>
+								<input  type="number" v-model="num1">
+								<br>
+								</label><span class="label_text">Кінець дiапазону</span>
+								<input  type="number" v-model="num2">
+								<br>
+								</label>
+								<br>
+								<button @click='getRandom()'>Згенерувати число</button>
+
+								<div class="answer">
+									Ваше рандомне число: <span>{{printRandom}}</span>
+								</div>
+								
+							</div>
+						</div>
+						<!-------------------------------------------------------->
+						<script>
+																	
+							const {createApp} = Vue
+					
+							createApp({
+								data(){
+									return{
+										num1:null,
+										num2:null,
+										randomNum:null
+										
+									}
+								},
+								
+							methods:{
+								getRandom(num1,num2) {
+									return this.randomNum = Math.floor(Math.random() * (this.num1 - this.num2)) + this.num2
+								},
+							},
+
+							computed:{
+								printRandom(){
+									return this.randomNum
+								}
+							}
+						
+						})
+
+
+							.mount('#app')
+					
+						</script>
+						<!-------------------------------------------------------->
+
+
+
+
+
+
+
+
+						<a class="item__link task-link" href="index.html">На головну</a>
 					</div> 
 				</main> 
 

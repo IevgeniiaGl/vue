@@ -5,6 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="css/style.css">
 		<link href="https://fonts.googleapis.com/css?family=Montserrat:500,600,700&display=swap" rel="stylesheet">
+		<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
 
 		<title>Lesson 01</title>
@@ -14,22 +15,102 @@
 			<header class="header">
 				<div class="header__container">
 				<h1 class="header__title">Рiшення задачi №5</h1>
-				<!-- Додаток містить масив об’єктів (логін, пароль) -- інсуючі логіни і паролі. Користувач вводить логін і пароль, а програма повідомляє чи може користувач бути авторизованим (чи є він одним з масиву). -->
+				<!-- Додаток містить масив об’єктів (логін, пароль) -- інсуючі логіни і паролі. 
+				Користувач вводить логін і пароль, а програма повідомляє чи може користувач бути авторизованим 
+				(чи є він одним з масиву). -->
 				</div>
 			</header>
 			<main class="main">
 				<div class="page">
 					<div class="page__container">
-						<ul class="page__list">
-							<li class="page__item item">
-								
-								<div class="item__text"> Решение задачи:
-									
-								</div>
-								<a class="item__link" href="index.html">На головну</a>
-							</li>
+						<!-------------------------------------------------------->
 
-						</ul>
+
+						<div id="app">
+							<div>
+								<div class="input_block">
+									<label>
+									<span class="label_text login">Логiн</span>
+									<input type="text" v-model="login">
+									</label>
+								</div>
+								<div class="input_block">
+									<label>
+									<span class="label_text login">Пароль</span>
+									<input  type="password" v-model="password">
+									</label>
+								</div>
+
+								<button @click="checkLogins">Вхiд</button>
+
+								<p>{{info}}</p>
+								
+							</div>
+						</div>
+						<!-------------------------------------------------------->
+						<script>
+																	
+							const {createApp} = Vue
+							let loginArray=[
+										{
+											'login':'Ivan',
+											'password':'12345'
+
+										},
+										{
+											'login':'Petro',
+											'password':'123884'
+
+										},
+										{
+											'login':'Admin1',
+											'password':'16884'
+
+										},
+										{
+											'login':'Administrator',
+											'password':'12000'
+
+										},
+										{
+											'login':'Ad_min',
+											'password':'30089'
+
+										},
+
+									]
+					
+							createApp({
+								data(){
+									return{
+										login:null,
+										password:null,
+										info:null,
+										
+									}
+								},
+
+
+							
+								
+							methods:{
+								checkLogins(){
+									let checkUser = loginArray.find((item)=>item.login === this.login && item.password === this.password) 
+									if (checkUser) this.info = 'Вiтаю на сайтi'
+									else this.info = 'Невiрний логiн або пароль'
+									this.login=null
+									this.password=null
+								}
+								
+							}})
+
+
+							.mount('#app')
+					
+						</script>
+						<!-------------------------------------------------------->
+
+						<a class="item__link task-link" href="index.html">На головну</a>
 					</div> 
 				</main> 
 
