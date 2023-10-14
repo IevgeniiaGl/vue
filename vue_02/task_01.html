@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="css/style.css">
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:500,600,700&display=swap" rel="stylesheet">
+		<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+
+		<title>Lesson 02</title>
+	</head>
+	<body>
+		<div class="wrapper">
+			<header class="header">
+				<div class="header__container">
+				<h1 class="header__title">Рiшення задачi №1</h1>
+				<!-- Задача 1. Вводимо логіна і пароль. Якщо логін вірний відображаємо смайл. Якщо ні, то:
+1) якщо логін = Іван – колір повідомлення про помилку синій
+2) якщо хтось інший, то колір повідомлення червоний
+ -->
+				</div>
+			</header>
+			<main class="main">
+				<div class="page">
+					<div class="page__container">
+						<!-------------------------------------------------------->
+
+
+						<div id="app">
+							<div>
+								<div class="input_block">
+									<label>
+									<span class="label_text login">Логiн</span>
+									<input type="text" v-model="login">
+									</label>
+								</div>
+								<div class="input_block">
+									<label>
+									<span class="label_text login">Пароль</span>
+									<input  type="password" v-model="password">
+									</label>
+								</div>
+
+								<button @click="checkLogins" type="button">Вхiд</button>
+								<br>
+								
+								<p :class ='statusColor'>{{info}}</p>
+								<img :src ='smile'>
+								
+							</div>
+						</div>
+						<!-------------------------------------------------------->
+						<style>
+							.correct_login{
+								color: blue;
+							}
+							.incorrect_login{
+								color: red;
+							}
+						</style>
+						<script>
+																	
+							const {createApp} = Vue
+							const loginArray=[
+										{
+											'login':'Ivan',
+											'password':'111'
+
+										},
+										{
+											'login':'Petro',
+											'password':'123884'
+
+										},
+										{
+											'login':'Admin1',
+											'password':'16884'
+
+										},
+										{
+											'login':'Administrator',
+											'password':'12000'
+
+										},
+										{
+											'login':'Ad_min',
+											'password':'30089'
+
+										},
+
+									]
+					
+							createApp({
+								data(){
+									return{
+										login:null,
+										password:null,
+										info:null,
+										smile:null,
+										statusColor:null
+										
+										
+									}
+								},
+							methods:{
+								checkLogins(){
+									
+									if (loginArray.find((item)=>item.login.toLowerCase() === this.login.toLowerCase() && item.password === this.password)){
+										this.smile = 'img/smile.png'
+										this.info = 'Вiтаю на сайтi'
+										this.statusColor=null
+									}
+									else if (loginArray.find((item)=>item.login.toLowerCase() === this.login.toLowerCase() && item.password !== this.password)){
+										this.info = 'Невiрний пароль'
+										this.statusColor = 'correct_login'
+										this.smile=null
+									}
+									else {
+										this.info = 'Невiрний логiн та пароль'
+										this.statusColor = 'incorrect_login'
+										this.smile=null
+										
+									}
+								}
+							}})
+
+
+							.mount('#app')
+					
+						</script>
+						<!-------------------------------------------------------->
+
+						<a class="item__link task-link" href="index.html">На головну</a>
+					</div> 
+				</main> 
+
+		</div>
+	</body>
+</html>

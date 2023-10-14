@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="css/style.css">
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:500,600,700&display=swap" rel="stylesheet">
+		<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+
+		<title>Lesson 02</title>
+	</head>
+	<body>
+		<div class="wrapper">
+			<header class="header">
+				<div class="header__container">
+				<h1 class="header__title">Рiшення задачi №5</h1>
+				<!-- Самостійно сформуйте масив даних та виведіть фрагмент на зразок поданого (дані не обов’язково повинні співпадати)-->
+				</div>
+			</header>
+			<main class="main">
+				<div class="page">
+					<div class="page__container">
+						<!-------------------------------------------------------->
+
+
+						<div id="app">
+							<div v-for="item in vueList" :key="item.id">	
+								<div class="item">
+									<div class="header-block">
+										<img :src="item.logo" class="logo_img">
+										<div class="flex-block">
+											<h2>{{item.siteName}}</h2>
+											<a :href="item.siteAdress" target="_blank">{{item.breadСrumbs}}</a>
+										</div>
+									</div>
+									<a :href="item.siteAdress" target="_blank"><h3>{{item.title}}</h3></a>
+									<div>{{item.description}}</div>
+								</div>
+								
+
+							</div>
+						</div>
+						<!-------------------------------------------------------->
+						<script>
+																	
+							const {createApp} = Vue
+							createApp({
+								data(){
+									return{
+										vueList:[ 
+										{
+											id:'001',
+											logo:'img/vue.png',
+											siteName:'Vue.js',
+											siteAdress:'https://vuejs.org/',
+											breadСrumbs:'https://habr.com › articles',
+											title:'Vue.js - The Progressive JavaScript Framework | Vue.js',
+											description: 'The Progressive JavaScript Framework · Approachable. Builds on top of standard HTML, CSS and JavaScript with intuitive API and world-class documentation ...'
+										},
+										{
+											id:'002',
+											logo:'img/habr.png',
+											siteName:'Habr',
+											siteAdress:'https://habr.com/ru/articles/329452/',
+											breadСrumbs:'https://habr.com › articles',
+											title:'Vue.js для сомневающихся. Все, что нужно знать',
+											description: '25 мая 2017 г. — Создателем Vue.js является Evan You, бывший сотрудник Google и Meteor Dev Group. Начал он разрабатывать фреймворк в 2013-м, а в феврале 2014-го ...'
+										},
+										{
+											id:'003',
+											logo:'img/githaub.png',
+											siteName:'Githaub',
+											siteAdress:'https://github.com/vuejs',
+											breadСrumbs:'https://github.com › vuejs',
+											title:'vuejs',
+											description: 'Vue.js is a progressive, incrementally-adoptable JavaScript framework for building UI on the web. TypeScript 40.7k 7.4k ...'
+										},
+										{
+											id:'004',
+											logo:'img/wiki.png',
+											siteName:'Википедия',
+											siteAdress:'https://en.wikipedia.org/wiki/Vue.js',
+											breadСrumbs:'https://ru.wikipedia.org › wiki › Vue',
+											title:'Vue.js',
+											description: ' The Progressive JavaScript Framework · Approachable. Builds on top of standard HTML, CSS and JavaScript with intuitive API and world-class documentation. ...'
+										},
+										
+										]	
+									}
+								}})
+
+
+							.mount('#app')
+					
+						</script>
+						<!-------------------------------------------------------->
+
+						<a class="item__link task-link" href="index.html">На головну</a>
+					</div> 
+				</main> 
+
+		</div>
+	</body>
+</html>

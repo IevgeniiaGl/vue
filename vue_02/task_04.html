@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="css/style.css">
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:500,600,700&display=swap" rel="stylesheet">
+		<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+
+		<title>Lesson 02</title>
+	</head>
+	<body>
+		<div class="wrapper">
+			<header class="header">
+				<div class="header__container">
+				<h1 class="header__title">Рiшення задачi №4</h1>
+				<!-- Вивести список як маркований список з елементами у форматі (name: salary)-->
+				</div>
+			</header>
+			<main class="main">
+				<div class="page">
+					<div class="page__container">
+						<!-------------------------------------------------------->
+
+
+						<div id="app">
+							<div v-for="worker in workersList" :key="worker.id">
+								<ul>
+									<li>{{worker.name}} : {{worker.salary}}</li>
+								</ul>	
+							</div>
+						</div>
+						<!-------------------------------------------------------->
+						<script>
+																	
+							const {createApp} = Vue
+							createApp({
+								data(){
+									return{
+										 workersList:[ // Для того чтобы использовать в разметке выносим в дату или компутед
+										{
+											id:'111',
+											name:'Iванов',
+											salary:'10000',
+
+										},
+										{
+											id:'112',
+											name:'Петров',
+											salary:'20000',
+
+										},
+										{
+											id:'113',
+											name:'Сидоров',
+											salary:'50000',
+
+											},
+										]	
+									}
+								}})
+
+
+							.mount('#app')
+					
+						</script>
+						<!-------------------------------------------------------->
+
+						<a class="item__link task-link" href="index.html">На головну</a>
+					</div> 
+				</main> 
+
+		</div>
+	</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="css/style.css">
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:500,600,700&display=swap" rel="stylesheet">
+		<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+
+		<title>Lesson 02</title>
+	</head>
+	<body>
+		<div class="wrapper">
+			<header class="header">
+				<div class="header__container">
+				<h1 class="header__title">Рiшення задачi №3</h1>
+				<!-- ЗЕлемент тренажера англійської. Виводимо зображення елемента і слово. 
+					Користувач вводить відповідь. Якщо вірно – відтворюємо фразу «Добре. Молодець!» 
+					(і додаємо зелену рамку до елемента), якщо ні - то відтворюємо фразу «Невірно, 
+					спробуйте ще раз» (і додаємо червону рамку).
+ -->
+				</div>
+			</header>
+			<main class="main">
+				<div class="page">
+					<div class="page__container">
+						<!-------------------------------------------------------->
+
+
+						<div id="app">
+							<div>
+								<div class="block" :class='border'>
+								<img src="img/table.png" alt="table" class="picture">
+								
+								<div>TABLE</div>
+								
+								<label>
+									<span class="label_text">Ваш переклад</span>
+									<input type="text" v-model="userAnswer">
+									</label>
+									<p :class ='statusAnswer'>{{info}}</p>
+									<button @click="checkAnswer">Перевiрити</button>
+									<br>
+								</div>
+							</div>
+						</div>
+						<!-------------------------------------------------------->
+						<style>
+
+							.correct_answer{
+								border: 5px solid green;
+								
+							
+							}
+							.incorrect_answer{
+								border: 5px solid red;
+						
+							}
+						</style>
+						<script>
+																	
+							const {createApp} = Vue
+							
+							const answer = 'стіл'
+							
+							createApp({
+								data(){
+									return{
+										userAnswer:null,
+										border:null
+									}
+								},
+							methods:{
+								checkAnswer(){
+									
+									if (this.userAnswer === answer ){
+										this.info = 'Добре. Молодець!'
+										this.border = 'correct_answer'
+									}
+									
+									else {
+										this.info = 'Невірно,спробуйте ще раз'
+										this.border = 'incorrect_answer'
+									}
+										
+										
+									
+								}
+							}})
+
+
+							.mount('#app')
+					
+						</script>
+						<!-------------------------------------------------------->
+
+						<a class="item__link task-link" href="index.html">На головну</a>
+					</div> 
+				</main> 
+
+		</div>
+	</body>
+</html>

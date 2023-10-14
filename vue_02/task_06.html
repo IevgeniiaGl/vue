@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="css/style.css">
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:500,600,700&display=swap" rel="stylesheet">
+		<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+
+		<title>Lesson 02</title>
+	</head>
+	<body>
+		<div class="wrapper">
+			<header class="header">
+				<div class="header__container">
+				<h1 class="header__title">Рiшення задачi №5</h1>
+				<!-- На кухню поступають замовлення. Спочатку ми додаємо їх у список “Очікують на виконання”, якщо повар береться робити — замовлення переходить у список “Виконуються”,   якщо замовлення виконано — переходить у список “Готові до виносу”. Якщо натиснути на “Подано” - страва зникає з таблиці-->
+				</div>
+			</header>
+			<main class="main">
+				<div class="page">
+					<div class="page__container">
+						<!-------------------------------------------------------->
+
+
+						<div id="app">
+							<div class="order">
+								<div class="order__header">
+									<label class="order__label">Нова замовлена страва
+										<input class="order__input" type="text" v-model="order">
+										<button @click="onWaiting">Додати</button>
+									</label>
+								</div>
+								<div class="order__block">
+									<div class="order__column">
+										<h2 class="order__title">Очiкують виконання</h2>
+										<div v-for="(product,index) in waitingList" :key="index" class="order__status">
+											<div>{{product}}</div>
+											<button @click="onProccessing(index)">Готувати</button>
+										</div>
+										
+									</div>
+									<div class="order__column">
+										<h2 class="order__title">Виконуються</h2>
+										<div v-for="(product,index) in proccessingList" :key="index" class="order__status">
+											<div>{{product}}</div>
+											<button @click="onCompleted(index)">Приготовлено</button>
+										</div>
+									</div>
+									<div class="order__column">
+										<h2 class="order__title">Готовi до виносу</h2>
+										<div v-for="(product,index) in completedList" :key="index" class="order__status">
+											<div>{{product}}</div>
+											<button @click="onDeleted(index)" >Подано</button>
+										</div>
+										
+									</div>
+								</div>
+							</div>
+							
+						</div>
+						<!-------------------------------------------------------->
+						<script>
+																	
+							const {createApp} = Vue
+							createApp({
+								data(){
+									return{
+										order:null,
+										waitingList:[ 'Голубцi','Грибовий суп','Блинчики з сиром','Салат Цезарь','Салат Грецький','Борщ','Плов'],
+										proccessingList:[ ],
+										completedList:[ ],
+									}
+								},
+								methods:{
+									onProccessing(index){
+										this.proccessingList.push(this.waitingList[index])
+										this.waitingList.splice(index,1)
+									},
+									onCompleted(index){
+										this.completedList.push(this.proccessingList[index])
+										this.proccessingList.splice(index,1)
+									},
+									onDeleted(index){
+										this.completedList.splice(index,1)
+									},
+									onWaiting(index){
+										if(this.order)
+										this.waitingList.push(this.order)
+										this.order = null
+										
+									},
+
+								}
+							
+							
+							
+							
+							
+							})
+								
+
+
+							.mount('#app')
+					
+						</script>
+						<!-------------------------------------------------------->
+
+						<a class="item__link task-link" href="index.html">На головну</a>
+					</div> 
+				</main> 
+
+		</div>
+	</body>
+</html>

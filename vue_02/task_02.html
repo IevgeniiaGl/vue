@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="css/style.css">
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:500,600,700&display=swap" rel="stylesheet">
+		<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+
+		<title>Lesson 02</title>
+	</head>
+	<body>
+		<div class="wrapper">
+			<header class="header">
+				<div class="header__container">
+				<h1 class="header__title">Рiшення задачi №2</h1>
+				<!-- З випадаючого списку вибираємо клас квитка у літаку. Якщо 
+				бізнес -  виводимо елементи для вибору газети та коньяку (якщо вибрано коньяк, 
+				то запропонувати закуску (так/ні)), на фоні зображення бізнес кают
+				економ – виводимо елементи для вибору типу пива і чипсів, на фоні хмарки. -->
+										
+ 
+				</div>
+			</header>
+			<main class="main">
+				<div class="page">
+					<div class="page__container">
+						<!-------------------------------------------------------->
+
+
+						<div id="app">
+							<div>
+								<div class="select_block">
+									<label>
+									<span class="label_text">Виберiть класс квитка</span>
+									<select v-model="ticketStatus"> 
+										<option disabled value='default'>Оберiть категорiю</option>
+										<option  value="bussines">бiзнес</option>
+										<option value="econom">эконом</option>
+									  </select>
+									  <br>
+									  <span>{{info}}</span>
+
+									  <div v-if="isEconom" class="econom_img"> 
+										<label>
+											<input type="checkbox" > Пиво
+										  </label>
+										  <br>
+										  <label>
+											<input type="checkbox"> Чiпси
+										  </label>
+									  </div>
+
+									  <div v-if="isBussines" > 
+										<label>
+											<input type="checkbox"> Газета
+										  </label>
+										  <br>
+										  <label>
+											<input type="checkbox" v-model="vip">Коньяк
+										  </label>
+									  </div>
+
+									  <div v-if="isDrink" v-model="toDrink" class="bussines_img"> 
+										ХОЧЕТЕ ЗАКУСКУ?
+										<br>
+										<input type="radio" id="yes" name="contact" value="yes" />
+    									<label>Так</label>
+										<br>
+    									<input type="radio" id="no" name="contact" value="no" />
+    									<label>Hi</label>
+									  </div>
+
+									  
+									  
+
+									
+
+								
+									
+
+
+
+
+								</div>
+								
+							</div>
+						</div>
+						<!-------------------------------------------------------->
+
+						<style>
+							.econom_img{
+								background: url('img/cloud.png') center / 100% no-repeat;
+								padding: 50px;
+							}
+							.bussines_img{
+								background: url('img/bussines.png') center / 100% no-repeat;
+								padding: 50px;
+								color: rgb(22, 16, 90);
+								font-weight: 700;
+							}
+						</style>
+
+							<!-------------------------------------------------------->
+						
+						<script>
+																	
+							const {createApp} = Vue
+							
+					
+							createApp({
+								data(){
+									return{
+										ticketStatus:'default',
+										vip:null,
+										toDrink:null,
+										back_img:null
+									}
+								},
+								computed:{
+									isBussines(){
+										if (this.ticketStatus==='bussines') 
+										return 'bussines'
+										
+									},
+									isEconom(){
+										if (this.ticketStatus==='econom') 
+										return 'econom'
+	
+									},
+									isDrink(){
+										return this.vip
+
+									}
+								}
+								})
+
+
+							.mount('#app')
+					
+						</script>
+						<!-------------------------------------------------------->
+
+						<a class="item__link task-link" href="index.html">На головну</a>
+					</div> 
+				</main> 
+
+		</div>
+	</body>
+</html>
