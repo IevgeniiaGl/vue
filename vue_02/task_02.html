@@ -36,11 +36,13 @@
 									<span class="label_text">Виберiть класс квитка</span>
 									<select v-model="ticketStatus"> 
 										<option disabled value='default'>Оберiть категорiю</option>
-										<option  value="bussines">бiзнес</option>
 										<option value="econom">эконом</option>
+										<option  value="bussines">бiзнес</option>
+										
 									  </select>
 									  <br>
-									  <span>{{info}}</span>
+
+									
 
 									  <div v-if="isEconom" class="econom_img"> 
 										<label>
@@ -114,8 +116,8 @@
 									return{
 										ticketStatus:'default',
 										vip:null,
-										toDrink:null,
-										back_img:null
+									
+									
 									}
 								},
 								computed:{
@@ -131,7 +133,7 @@
 									},
 									isDrink(){
 										return this.vip
-
+										
 									}
 								}
 								})
