@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="css/style.css">
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:500,600,700&display=swap" rel="stylesheet">
+		<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+
+		<title>Lesson 03</title>
+	</head>
+	<body>
+		<div class="wrapper">
+			<header class="header">
+				<div class="header__container">
+				<h1 class="header__title">Рiшення задачi №6</h1>
+				
+				</div>
+			</header>
+			<main class="main">
+				<div class="page">
+					<div class="page__container">
+						<!-------------------------------------------------------->
+
+
+						<div id="app">
+
+							
+							<div class="danser-block">
+								<div class="danser">
+									<h2 class="danse-title">Хлопцi</h2>
+									<div v-for="(boy, index) in boysList" :key="index" class="danser-item" :class="{['background']: selectedBoy === boy }" @click="selectBoys(index)">{{boy}}</div>
+								</div>
+
+								<div class="danser">
+									<h2 class="danse-title">Дiвчата</h2>
+									<div v-for="(girl, index) in girlsList" :key="index" class="danser-item" :class="{['background']: selectedGirl === girl }" @click="selectGirls(index)">{{girl}}</div>
+								</div>
+							</div>
+							<button class="btn" @click="addToSelect" >Додати пару</button>
+							<div class="select-block">
+								<h2 class="danse-title">Обранi пари</h2>
+								<div v-for="(couple, index) in selectedList" :key="index" class="danser-item select-item" >
+									<div>{{couple}}</div>  
+									<button  @click="onDelete(index)"> Видалити пару</button>
+								  </div>
+							</div>
+						</div>
+					
+						<!-------------------------------------------------------->
+						<script>
+																	
+							const {createApp} = Vue
+							createApp({
+								data() {
+          					return {
+            					boysList: ["Iван", "Петро", "Степан", "Олег","Вiктор"],
+            					girlsList: ["Оксана", "Ольга", "Тетяна", "Анна", "Катерина"],
+            					selectedList: [],
+            					selectedBoy: null,
+            					selectedGirl: null,
+								boyIndex:null
+							}
+        				},
+							
+							
+
+
+
+
+							methods: {
+							selectBoys(index) {
+           					this.selectedBoy = this.boysList[index];
+          					},
+
+          					selectGirls(index) {
+            				this.selectedGirl = this.girlsList[index];
+          					},
+							  addToSelect() {
+
+								if (this.selectedBoy && this.selectedGirl) {
+ 								const selectedDansers = `${this.selectedBoy} - ${this.selectedGirl}`;
+ 								this.selectedList.push(selectedDansers);
+								this.boysIndex = this.boysList.indexOf(this.selectedBoy);
+								if ( this.boysIndex !== -1) this.boysList.splice( this.boysIndex, 1);
+								this.girlsIndex = this.girlsList.indexOf(this.selectedGirl);
+								if ( this.girlsIndex !== -1) 
+								this.girlsList.splice( this.girlsIndex, 1) 
+								this.selectedBoy = null
+								this.selectedGirl = null
+							}},
+
+								onDelete(index){
+								this.selectedList.splice(index,1)
+								}
+
+							}
+							
+							
+							},)
+
+
+							.mount('#app')
+							</script>
+							<style>
+								
+								.danser-block{
+									display: flex;
+									gap: 20px;
+									margin-bottom: 30px;
+									text-align: center;
+									
+								}
+								
+								.danser-item{
+									margin-bottom: 10px;
+									cursor: pointer;
+									padding: 10px 50px;
+									border: 1px solid #916ad0;
+
+								}
+								.select-block{
+									padding-top: 30px;
+									
+								}
+								.danse-title{
+									margin-bottom: 20px;
+									text-transform: uppercase;
+								}
+								.background{
+									background: #916ad0;
+								}
+								.select-item{
+									display: flex;
+									align-items: center;
+									gap: 10px;
+									max-width: 500px;
+									justify-content: space-between;
+									padding: 20px;
+								}
+							</style>
+						<!-------------------------------------------------------->
+
+						<a class="item__link task-link" href="index.html">На головну</a>
+					</div> 
+				</main> 
+
+		</div>
+	</body>
+</html>

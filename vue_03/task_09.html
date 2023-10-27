@@ -1,0 +1,186 @@
+
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:500,600,700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+  <title>Lesson 03</title>
+ 
+</head>
+
+<body>
+	<div class="wrapper">
+		<header class="header">
+			<div class="header__container">
+			<h1 class="header__title">Рiшення задачi №8</h1>
+			
+			</div>
+		</header>
+		<main class="main">
+			<div class="page">
+				<div class="page__container">
+
+  <div id="app">
+	<div class="translator">
+        <div class="translator-block">
+          <div class="translator-item">
+              <div class="word" 
+			  					v-for="word in wordsList" 
+								:key="word.id" 
+								:class="answerBorder(word, 'en')"
+                				@click="selectCurrentWord(word, 'en')">
+                				{{ word.en }}
+              </div>
+          </div>
+        </div>
+        <div class="translator-block">
+          <div class="translator-item">
+              <div class="word" 
+			  					v-for="word in mixWordsArray()" 
+			  					:key="word.id"  
+			  					:class="answerBorder(word, 'ua')" 
+			  					@click="selectCurrentWord(word, 'ua')">
+                				{{ word.ua }}
+              </div>
+          </div>
+        </div>
+</div>
+  </div>
+
+  <script>
+    const { createApp } = Vue;
+
+    const words = [
+      { id: 1, en: 'house', ua: 'будинок' },
+      { id: 2, en: 'dog', ua: 'собака' },
+      { id: 3, en: 'cat', ua: 'кіт' },
+      { id: 4, en: 'car', ua: 'автомобіль' },
+      { id: 5, en: 'horse', ua: 'кінь' },
+      { id: 6, en: 'city', ua: 'місто' },
+      { id: 7, en: 'apple', ua: 'яблуко' }
+    ];
+
+
+
+    const app = createApp({
+      data() {
+        return {
+          answer: {
+            en: 0,
+            ua: 0,
+          },
+
+          answerError: false
+        }
+      },
+
+      computed: {
+        wordsList() {
+          return words;
+        },
+      },
+
+      methods: {
+        answerBorder(word, lang) {
+          if (word.id === this.answer[lang] && !this.answerError) {
+            return 'answerСorrect';
+          }
+
+          if (word.id === this.answer[lang] && this.answerError) {
+            return 'answerUncorrect';
+          }
+
+          return null;
+        },
+
+        mixWordsArray() {
+          let mixArray = [];
+          mixArray.push(...words);
+		return mixArray.sort(() => Math.random() - 0.5)},
+
+        selectCurrentWord(word, lang) {
+          this.answer[lang] = word.id;
+          this.AnswerVerification();
+        },
+
+        AnswerVerification() {
+          if (this.answer.en !== 0 && this.answer.ua !== 0) {
+            if (this.answer.en !== this.answer.ua) {
+              this.answerError = true;
+              setTimeout(() => {
+                this.reset();
+              }, 1000);
+            } else {
+              setTimeout(() => {
+                this.deleteWordById(this.answer.en);
+                this.reset();
+              }, 1000);
+            }
+          }
+        },
+
+        reset() {
+          this.answerError = false;
+          this.answer = {
+            en: 0,
+            ua: 0,
+          }
+        },
+
+        deleteWordById(id) {
+          const index = words.findIndex(word => word.id === id);
+          words.splice(index, 1);
+        }
+      }
+    })
+
+    app.mount('#app');
+  </script>
+
+
+    <style>
+		.translator{
+			display: flex;
+			gap: 20px;
+			margin-bottom: 30px;
+			text-align: center;
+		}
+		.word {
+			margin-bottom: 10px;
+			cursor: pointer;
+			padding: 10px 50px;
+			border: 1px solid #916ad0;
+			cursor: pointer;
+			width: 250px;
+			font-size: 20px;
+		}
+	
+		.word:hover {
+		  background: #916ad0;
+		  
+		}
+	
+		.answerСorrect {
+		  border: 2px solid blue;
+		  background: #916ad0;
+		}
+	
+		.answerUncorrect {
+		  border: 2px solid red;
+		  background: #916ad0;
+		}
+	  </style>
+
+
+<a class="item__link task-link" href="index.html">На головну</a>
+</div> 
+</main> 
+
+		</div>
+	</body>
+</html>
